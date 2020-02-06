@@ -21,10 +21,9 @@ public class Station : MonoBehaviour
         Player = GameObject.Find("Player");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision) //While Player is touching station
     {
-        Debug.Log("Touched");
-        if (Input.GetButton("Cancel") && collision.collider.tag == "Player")
+        if (Input.GetButton("Cancel") && collision.collider.tag == "Player") //If esc pressed and collision with Player
         {
             Player.GetComponent<playerStation>().attachedStation = gameObject.name;
             Player.GetComponent<playerMove>().isAttached = true;

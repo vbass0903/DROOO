@@ -18,15 +18,14 @@ public class playerMove : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        Jump();
     }
 
     void FixedUpdate()
@@ -35,10 +34,7 @@ public class playerMove : MonoBehaviour
         {
             //Horizontal Movement
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-            transform.position += movement * Time.deltaTime * moveSpeed;
-
-            //Jump
-            Jump();
+            transform.position += movement * Time.fixedDeltaTime * moveSpeed;
 
             //Adds variable jumping, tighter falling
             if (rb.velocity.y < 0)
