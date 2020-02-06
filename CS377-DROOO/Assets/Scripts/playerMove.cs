@@ -10,7 +10,6 @@ public class playerMove : MonoBehaviour
     public float moveSpeed = 5f;
     public bool isGrounded = false;
     public bool isAttached = false;
-    public string attachedStation = null;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -32,7 +31,7 @@ public class playerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isAttached) //While not attached to a station
+        if (!isAttached) //While not attached to a station, allow movement
         {
             //Horizontal Movement
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
@@ -53,11 +52,6 @@ public class playerMove : MonoBehaviour
                     (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
             }
         }
-        else
-        {
-            //TODO
-        }
-        
     }
 
     void Jump()

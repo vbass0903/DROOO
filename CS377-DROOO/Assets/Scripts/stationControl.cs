@@ -17,7 +17,6 @@ public class stationControl : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
             Debug.Log("Press F to pay Respects");
-            Player.GetComponent<playerMove>().attachedStation = gameObject.name;
             Player.GetComponent<playerMove>().isAttached = true;
         }
     }
