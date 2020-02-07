@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\playerCamera.cs" />
      <Compile Include="Assets\Scripts\playerMove.cs" />
      <Compile Include="Assets\Scripts\playerStation.cs" />
+     <Compile Include="Assets\Scripts\playerUI.cs" />
      <Compile Include="Assets\Scripts\stationControl.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/epicg/Desktop/Desktop/Winter2020/DROOO/CS377-DROOO/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
