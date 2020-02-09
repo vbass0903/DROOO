@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class playerStation : MonoBehaviour
 {
+    ControllerActions controls;
+    float detachButton;
     bool isAttach = false;
     public bool isLeftTurret = false;
     public bool isRightTurret = false;
     public float moveSpeed = 5f; //Copied from playerMove, can be changed to change submarine move speed
     public string attachedStation = null;
     public float turretRotateSpeed = 70f;
+
+    void Awake()
+    {
+        controls = new ControllerActions();
+    }
 
     void Start()
     {
@@ -19,8 +27,9 @@ public class playerStation : MonoBehaviour
 
     void Update()
     {
+        detachButton = controls.Gameplay.Detach.ReadValue<float>();
         isAttach = gameObject.GetComponent<playerMove>().isAttached; //Update isAttach
-        if (isAttach && Input.GetButton("Submit")) //Disconnect from station
+        if (isAttach && detachButton == 1) //Disconnect from station
         {
             isAttach = false;
             gameObject.GetComponent<playerMove>().isAttached = false;
@@ -75,5 +84,14 @@ public class playerStation : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 }
