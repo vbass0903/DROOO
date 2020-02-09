@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class Station : MonoBehaviour
@@ -8,14 +9,23 @@ public class Station : MonoBehaviour
     GameObject Player;
     GameObject attachUI;
     GameObject detachUI;
+    ControllerActions controls;
     bool isAttached = false;
     public int hitpoints;
     public string nam;
+    float attachButton;
+    float detachButton;
+
 
     public Station(int hp, string ID) //Constructor
     {
         hitpoints = hp;
         nam = ID;
+    }
+
+    void Awake()
+    {
+        controls = new ControllerActions();
     }
 
     void Start()
@@ -27,7 +37,8 @@ public class Station : MonoBehaviour
 
     void Update()
     {
-
+        attachButton = controls.Gameplay.Attach.ReadValue<float>();
+        detachButton = controls.Gameplay.Detach.ReadValue<float>();
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -41,7 +52,7 @@ public class Station : MonoBehaviour
             detachUI.GetComponent<playerUI>().isTouching = true;
         }
 
-        if (Input.GetButton("Cancel") && collision.collider.tag == "Player") //If esc pressed and collision with Player
+        if (attachButton == 1 && collision.collider.tag == "Player") //If esc pressed and collision with Player
         {
             Player.GetComponent<playerStation>().attachedStation = gameObject.name;
             Player.GetComponent<playerMove>().isAttached = true;
@@ -59,5 +70,14 @@ public class Station : MonoBehaviour
             detachUI.GetComponent<playerUI>().isTouching = false;
             isAttached = false;
         }
+    }
+
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 }
