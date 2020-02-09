@@ -9,7 +9,6 @@ public class Station : MonoBehaviour
     GameObject attachUI;
     GameObject detachUI;
     bool isAttached = false;
-    bool isLeft = false;
     public int hitpoints;
     public string nam;
 

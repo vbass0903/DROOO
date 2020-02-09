@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretGun1 : MonoBehaviour {
+public class TurretGun1 : MonoBehaviour
+{
     GameObject Player;
     GameObject Turret;
     GameObject Body;
-
-    Vector3 movement;
 
     public Rigidbody2D Bullet;
     public Rigidbody2D new_Bullet;
@@ -29,7 +28,6 @@ public class TurretGun1 : MonoBehaviour {
 
     void Update()
     {
-        movement = new Vector3(0f, 0f, Input.GetAxis("Horizontal"));
         if (Input.GetKeyDown("w") && Player.GetComponent<playerStation>().isRightTurret)
         {
             new_Bullet = Instantiate(Bullet, Turret.transform.position, Turret.transform.rotation);
