@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class Station : MonoBehaviour
 {
-
     GameObject Player;
     GameObject attachUI;
     GameObject detachUI;
     bool isAttached = false;
     public int hitpoints;
-    public string name;
+    public string nam;
 
     public Station(int hp, string ID) //Constructor
     {
         hitpoints = hp;
-        name = ID;
+        nam = ID;
     }
 
     void Start()
@@ -49,6 +48,7 @@ public class Station : MonoBehaviour
             attachUI.GetComponent<playerUI>().isTouching = false;
             isAttached = true;
         }
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
