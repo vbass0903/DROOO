@@ -820,8 +820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -294.1, y: 178.8}
-  m_SizeDelta: {x: -588, y: -357.6}
+  m_AnchoredPosition: {x: -375.05, y: 250}
+  m_SizeDelta: {x: -749.9, y: -500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681745550
 MonoBehaviour:
@@ -1100,8 +1100,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -294.1, y: 178.8}
-  m_SizeDelta: {x: -588, y: -357.6}
+  m_AnchoredPosition: {x: -375.05, y: 250}
+  m_SizeDelta: {x: -749.9, y: -500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056233535
 MonoBehaviour:
@@ -1352,8 +1352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0aa14e355bb15548accca32053a3933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1830457720}
-  attachUI: {fileID: 1056233533}
   hitpoints: 10
   name: Pilot
 --- !u!1 &1467792134
