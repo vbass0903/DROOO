@@ -57,7 +57,8 @@ public class playerStation : MonoBehaviour
                     GameObject TurretGun = GameObject.Find("TurretGun1");
                     GameObject TurretBody = GameObject.Find("TurretBody1");
 
-                    movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+                    movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+
                     if (movement.x > 0)
                     {
                         TurretGun.transform.RotateAround(TurretBody.transform.position, Vector3.back, turretRotateSpeed * Time.deltaTime);
@@ -72,7 +73,7 @@ public class playerStation : MonoBehaviour
                     TurretGun = GameObject.Find("TurretGun2");
                     TurretBody = GameObject.Find("TurretBody2");
 
-                    movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+                    movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
                     if (movement.x > 0)
                     {
                         TurretGun.transform.RotateAround(TurretBody.transform.position, Vector3.back, turretRotateSpeed * Time.deltaTime);
