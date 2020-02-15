@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public GameObject bullet;
-    public GameObject oxyBar;
+    public GameObject bar;
     public float oxyGain = 50f;
     void Start()
     {
@@ -14,16 +14,26 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         bullet = GameObject.Find("Bullet(Clone)");
-        oxyBar = GameObject.Find("OxygenBar");
+        bar = GameObject.Find("OxygenBar");
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.collider.tag == "Enemy")
+        if (col.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().rotateRate += 10;
-            oxyBar.GetComponent<OxygenBar>().GainOxy(oxyGain);
-            Destroy(bullet);
+            //collision.gameObject.GetComponent<Enemy>().rotateRate += 10;
+            bar.GetComponent<OxygenBar>().LoseOxy(oxyGain);
+            Destroy(gameObject);
         }
+        if (col.CompareTag("Ground") || col.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+        if (col.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+            Destroy(col.gameObject);
+        }
+
 
     }
 
