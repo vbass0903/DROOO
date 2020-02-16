@@ -12,11 +12,14 @@ public class playerStation : MonoBehaviour
     public bool isRightTurret = false;
     public float moveSpeed = 5f; //Copied from playerMove, can be changed to change submarine move speed
     public string attachedStation = null;
-    public float turretRotateSpeed = 70f;
+    public float turretRotateSpeed = 100f;
+    private float joystickAngle;
+    private float angleModifier;
 
     void Awake()
     {
         controls = new ControllerActions();
+        
     }
 
     void Start()
@@ -57,30 +60,16 @@ public class playerStation : MonoBehaviour
                     GameObject TurretGun = GameObject.Find("TurretGun1");
                     GameObject TurretBody = GameObject.Find("TurretBody1");
 
-                    movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-                    if (movement.x > 0)
-                    {
-                        TurretGun.transform.RotateAround(TurretBody.transform.position, Vector3.back, turretRotateSpeed * Time.deltaTime);
-                    }
-                    else if (movement.x < 0)
-                    {
-                        TurretGun.transform.RotateAround(TurretBody.transform.position, Vector3.forward, turretRotateSpeed * Time.deltaTime);
-                    }
+                    joystickAngle = Mathf.Atan2(Input.GetAxis("Vertical"),Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
+                    TurretBody.transform.rotation = Quaternion.AngleAxis(joystickAngle + 90, Vector3.forward);
                     break;
                 case "TurretStation2":
                     isLeftTurret = true;
                     TurretGun = GameObject.Find("TurretGun2");
                     TurretBody = GameObject.Find("TurretBody2");
 
-                    movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-                    if (movement.x > 0)
-                    {
-                        TurretGun.transform.RotateAround(TurretBody.transform.position, Vector3.back, turretRotateSpeed * Time.deltaTime);
-                    }
-                    else if (movement.x < 0)
-                    {
-                        TurretGun.transform.RotateAround(TurretBody.transform.position, Vector3.forward, turretRotateSpeed * Time.deltaTime);
-                    }
+                    joystickAngle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
+                    TurretBody.transform.rotation = Quaternion.AngleAxis(joystickAngle - 90, Vector3.forward);
                     break;
             }
         }
