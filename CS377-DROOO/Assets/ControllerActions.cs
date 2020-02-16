@@ -48,7 +48,7 @@ public class @ControllerActions : IInputActionCollection, IDisposable
                     ""id"": ""7c317011-5f0b-46cb-83c4-b9596ded2316"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Tap""
                 },
                 {
                     ""name"": ""Move"",
@@ -63,7 +63,7 @@ public class @ControllerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a36a40d4-9383-4360-b178-fbab1e518c36"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -74,7 +74,7 @@ public class @ControllerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""910e20c4-7da0-4be8-85bd-2563be626d53"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -85,7 +85,7 @@ public class @ControllerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""efb36527-de22-4353-83ff-cba1649a2820"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -96,7 +96,7 @@ public class @ControllerActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""08f0a578-4568-430a-a8a9-09129e54b715"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

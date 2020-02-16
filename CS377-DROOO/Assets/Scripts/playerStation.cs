@@ -5,37 +5,41 @@ using UnityEngine.InputSystem;
 
 public class playerStation : MonoBehaviour
 {
-    ControllerActions controls;
-    float detachButton;
+    GameObject Player;
+    GameObject TurretGun;
+    GameObject TurretBody;
+
+    public Rigidbody2D Bullet;
+    public Rigidbody2D new_Bullet;
+
+    public float speed;
+    public float timeBetweenShots;
+    public float timeDestroy;
+
     bool isAttach = false;
     public bool isLeftTurret = false;
     public bool isRightTurret = false;
     public float moveSpeed = 5f; //Copied from playerMove, can be changed to change submarine move speed
     public string attachedStation = null;
     public float turretRotateSpeed = 70f;
+    Vector2 move;
 
     void Awake()
     {
-        controls = new ControllerActions();
+        
     }
 
     void Start()
     {
-        //Set equal to attached status from playerMove
-        isAttach = gameObject.GetComponent<playerMove>().isAttached;
+        Player = GameObject.Find("Player");
+        speed = 10f;
+        timeBetweenShots = 0.5f;
+        timeDestroy = 3f;
     }
 
     void Update()
     {
-        detachButton = controls.Gameplay.Detach.ReadValue<float>();
-        isAttach = gameObject.GetComponent<playerMove>().isAttached; //Update isAttach
-        if (isAttach && detachButton == 1) //Disconnect from station
-        {
-            isAttach = false;
-            gameObject.GetComponent<playerMove>().isAttached = false;
-            isLeftTurret = false;
-            isRightTurret = false;
-        }
+
     }
     
     void FixedUpdate()
@@ -46,16 +50,17 @@ public class playerStation : MonoBehaviour
             {
                 case "PilotStation":
                     GameObject submarine = GameObject.Find("Submarine");
+                    move = gameObject.GetComponent<playerMove>().move;
 
-                    Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+                    Vector3 movement = new Vector3(move.x, move.y, 0f);
                     submarine.transform.position += movement * Time.fixedDeltaTime * moveSpeed; //Update position of submarine
                     transform.position += movement * Time.fixedDeltaTime * moveSpeed; //Update player position to stay relevant to sub movement
 
                     break;
                 case "TurretStation1":
                     isRightTurret = true;
-                    GameObject TurretGun = GameObject.Find("TurretGun1");
-                    GameObject TurretBody = GameObject.Find("TurretBody1");
+                    TurretGun = GameObject.Find("TurretGun1");
+                    TurretBody = GameObject.Find("TurretBody1");
 
                     movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
                     if (movement.x > 0)
@@ -86,12 +91,43 @@ public class playerStation : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    public void Move(InputAction.CallbackContext context)
     {
-        controls.Gameplay.Enable();
+
     }
-    void OnDisable()
+
+    public void Attach(InputAction.CallbackContext context)
     {
-        controls.Gameplay.Disable();
+        isAttach = true;
+    }
+
+    public void Detach(InputAction.CallbackContext context)
+    {
+        isAttach = false;
+        isLeftTurret = false;
+        isRightTurret = false;
+    }
+
+    public void Fire(InputAction.CallbackContext context)
+    {
+        if (isAttach && isRightTurret)
+        {
+            TurretGun = GameObject.Find("TurretGun1");
+            TurretBody = GameObject.Find("TurretBody1");
+
+            new_Bullet = Instantiate(Bullet, TurretGun.transform.position, TurretGun.transform.rotation);
+            new_Bullet.velocity = -TurretGun.transform.right * speed;
+            Destroy(new_Bullet.gameObject, timeDestroy);
+        }
+        else if (isAttach && isLeftTurret)
+        {
+            TurretGun = GameObject.Find("TurretGun2");
+            TurretBody = GameObject.Find("TurretBody2");
+
+            new_Bullet = Instantiate(Bullet, TurretGun.transform.position, TurretGun.transform.rotation);
+            new_Bullet.transform.rotation = TurretGun.transform.rotation * new Quaternion(0, 0, 180, 0);
+            new_Bullet.velocity = TurretGun.transform.right * speed;
+            Destroy(new_Bullet.gameObject, timeDestroy);
+        }
     }
 }

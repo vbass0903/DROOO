@@ -11,25 +11,19 @@ public class playerMove : MonoBehaviour
     public float moveSpeed = 5f;
     public bool isGrounded = false;
     public bool isAttached = false;
-    ControllerActions controls;
+    //ControllerActions controls;
     Rigidbody2D rb;
-    Vector2 move;
+    public Vector2 move;
     float jumping;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        controls = new ControllerActions();
-
-        controls.Gameplay.Jump.performed += ctx => Jump();
-        
-        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
     }
 
     void Update()
     {
-        jumping = controls.Gameplay.Jump.ReadValue<float>(); //Check for jump 
+        
     }
 
     void FixedUpdate()
@@ -54,7 +48,7 @@ public class playerMove : MonoBehaviour
         }
     }
 
-    void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
         if (isGrounded && !isAttached) //Check for touching grounded surface and attachment
         {
@@ -62,12 +56,18 @@ public class playerMove : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    public void Move(InputAction.CallbackContext context)
     {
-        controls.Gameplay.Enable();
+        move = context.ReadValue<Vector2>();
     }
-    void OnDisable()
+
+    public void Attach(InputAction.CallbackContext context)
     {
-        controls.Gameplay.Disable();
+        isAttached = true;
+    }
+
+    public void Detach(InputAction.CallbackContext context)
+    {
+        isAttached = false;
     }
 }

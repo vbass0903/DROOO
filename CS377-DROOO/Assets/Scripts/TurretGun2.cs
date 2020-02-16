@@ -9,8 +9,6 @@ public class TurretGun2 : MonoBehaviour
     GameObject Turret;
     GameObject Body;
 
-    ControllerActions controls;
-
     public Rigidbody2D Bullet;
     public Rigidbody2D new_Bullet;
 
@@ -20,8 +18,7 @@ public class TurretGun2 : MonoBehaviour
 
     void Awake()
     {
-        controls = new ControllerActions();
-        controls.Gameplay.TurretFire.started += ctx => Fire();
+
     }
 
     void Start()
@@ -37,13 +34,7 @@ public class TurretGun2 : MonoBehaviour
 
     void Update()
     {
-        /*if (Input.GetKeyDown("w") && Player.GetComponent<playerStation>().isLeftTurret)
-        {
-            new_Bullet = Instantiate(Bullet, Turret.transform.position, Turret.transform.rotation);
-            new_Bullet.transform.rotation = Turret.transform.rotation * new Quaternion(0,0,180,0);
-            new_Bullet.velocity = transform.right * speed;
-            Destroy(new_Bullet.gameObject, timeDestroy);
-        }*/
+
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -68,14 +59,5 @@ public class TurretGun2 : MonoBehaviour
             Destroy(new_Bullet.gameObject, timeDestroy);
         }
         
-    }
-
-    void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
-    void OnDisable()
-    {
-        controls.Gameplay.Disable();
     }
 }

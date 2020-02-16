@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1384425271749190313}
   - component: {fileID: 1384425271749190314}
   - component: {fileID: 1384425271749190317}
-  - component: {fileID: 1384425271749190316}
+  - component: {fileID: 5949419854200949958}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -152,6 +152,7 @@ MonoBehaviour:
   moveSpeed: 5
   isGrounded: 0
   isAttached: 0
+  move: {x: 0, y: 0}
 --- !u!114 &1384425271749190317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,30 +165,156 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b20324a4104d64fbc479e3dc0e4cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bullet: {fileID: 6378037305778157739, guid: d458bfa646d5d9b4a957b8079f7ffd3d, type: 3}
+  new_Bullet: {fileID: 6378037305778157739, guid: d458bfa646d5d9b4a957b8079f7ffd3d,
+    type: 3}
+  speed: 0
+  timeBetweenShots: 0
+  timeDestroy: 0
   isLeftTurret: 0
   isRightTurret: 0
   moveSpeed: 5
   attachedStation: 
   turretRotateSpeed: 70
---- !u!1818360608 &1384425271749190316
-PositionConstraint:
+--- !u!114 &5949419854200949958
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384425271749190315}
   m_Enabled: 1
-  m_Weight: 1
-  m_TranslationAtRest: {x: 0.40999985, y: -1.06, z: 0.23078156}
-  m_TranslationOffset: {x: 0, y: -3.7099998, z: 0}
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_IsContraintActive: 0
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ecaaaa02d4f9b164db55d66655333ab1,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1384425271749190314}
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ce260946-564d-4c8e-ace1-1727f9c33723
+    m_ActionName: Gameplay/Jump[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1384425271749190317}
+        m_MethodName: Attach
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1384425271749190314}
+        m_MethodName: Attach
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e93c064f-69cd-4c0e-a6a6-133a17d773ca
+    m_ActionName: Gameplay/Attach[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1384425271749190314}
+        m_MethodName: Detach
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1384425271749190317}
+        m_MethodName: Detach
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 48fc5c0c-784d-4097-a294-87aeb94ef195
+    m_ActionName: Gameplay/Detach[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1384425271749190317}
+        m_MethodName: Fire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7c317011-5f0b-46cb-83c4-b9596ded2316
+    m_ActionName: Gameplay/TurretFire[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1384425271749190314}
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1384425271749190317}
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 31b03754-2f1f-4dc2-bed0-104ce4156dec
+    m_ActionName: Gameplay/Move[/XInputControllerWindows/leftStick]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1384425273294979609
 GameObject:
   m_ObjectHideFlags: 0

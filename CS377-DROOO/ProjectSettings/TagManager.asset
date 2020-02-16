@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Left
   - Enemy
+  - Pilot
   layers:
   - Default
   - TransparentFX

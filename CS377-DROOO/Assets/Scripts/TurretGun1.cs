@@ -9,8 +9,6 @@ public class TurretGun1 : MonoBehaviour
     GameObject Turret;
     GameObject Body;
 
-    ControllerActions controls;
-
     public Rigidbody2D Bullet;
     public Rigidbody2D new_Bullet;
 
@@ -20,8 +18,7 @@ public class TurretGun1 : MonoBehaviour
 
     void Awake()
     {
-        controls = new ControllerActions();
-        controls.Gameplay.TurretFire.started += ctx => Fire();
+
     }
 
     void Start()
@@ -49,10 +46,9 @@ public class TurretGun1 : MonoBehaviour
         {
             Turret.transform.RotateAround(Body.transform.position, Vector3.back, 100f * Time.deltaTime);
         }
-
     }
 
-    void Fire()
+    public void Fire(InputAction.CallbackContext context)
     {
         if (Player.GetComponent<playerMove>().isAttached && Player.GetComponent<playerStation>().isRightTurret)
         {
@@ -60,16 +56,5 @@ public class TurretGun1 : MonoBehaviour
             new_Bullet.velocity = -transform.right * speed;
             Destroy(new_Bullet.gameObject, timeDestroy);
         }
-        
     }
-
-    void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
-    void OnDisable()
-    {
-        controls.Gameplay.Disable();
-    }
-
 }

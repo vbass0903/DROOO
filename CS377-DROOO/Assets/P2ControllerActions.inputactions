@@ -1,0 +1,128 @@
+{
+    "name": "P2ControllerActions",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "9538554f-b766-4ed0-a381-958eeda7fc1c",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "9be37d22-4d77-4ca4-bd9f-04b4a42ad4e4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Attach",
+                    "type": "Button",
+                    "id": "9eef240f-d291-47ee-a00f-dcbb8251a73f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Detach",
+                    "type": "Button",
+                    "id": "51d855a5-bf33-4fc3-bc85-27a26ca9eb65",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TurretFire",
+                    "type": "Button",
+                    "id": "5e172e74-ca74-4891-a318-e759c6decd98",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveL",
+                    "type": "Button",
+                    "id": "54aac522-fcd5-4125-9370-9b0db056072d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveR",
+                    "type": "Button",
+                    "id": "3c79e0a5-28a5-41b2-9dd1-97a93d3b539c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "29bbb99c-6cb7-4ac4-9a8c-fe77110698d9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63e5c4ad-4928-42fb-a441-6b4888318778",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attach",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88b42bc0-6cea-4975-9470-6caf4cc3c5a6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Detach",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab78b43e-f9c2-4eeb-87a0-15818e803c51",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurretFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f08b2bb0-302d-481e-8bd1-2e9689eff967",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50a09c74-c1c5-488b-97c5-2e91381ae001",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
